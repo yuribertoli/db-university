@@ -21,12 +21,31 @@ GROUP BY `department_id`
 
 ------JOIN------
 1)
+SELECT `students`.`name`, `surname`, `degrees`.`name` AS "corso"
+FROM `students` 
+JOIN `degrees`
+ON `students`.`degree_id` = `degrees`.`id`
+WHERE `degrees`.`name` = "Corso di Laurea in Economia"
 
 2)
+SELECT `degrees`.`name`
+FROM `departments`
+JOIN `degrees` ON `departments`.`id` = `degrees`.`department_id`
+WHERE `departments`.`name` = "Dipartimento di Neuroscienze"
 
 3)
+SELECT `courses`.`name`, `teachers`.`name`, `teachers`.`surname`
+FROM `teachers`
+JOIN `course_teacher` ON `teachers`.`id` = `course_teacher`.`teacher_id`
+JOIN `courses` ON `course_teacher`.`course_id` = `courses`.`id`
+WHERE `teachers`.`id` = 44
 
 4)
+SELECT `students`.`surname`, `students`.`name`, `degrees`.`name`, `departments`.`name`
+FROM `students` 
+JOIN `degrees` ON `students`.`degree_id` = `degrees`.`id`
+JOIN `departments` ON `degrees`.`department_id` = `departments`.`id`
+ORDER BY `students`.`surname` ASC, `students`.`name` ASC
 
 5)
 
